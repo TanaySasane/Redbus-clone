@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 const stripe = require("stripe")(
-  "sk_test_51IiFMtSGig8u12pPZuVMe7YPOSgT6f3dbmQt6oEhsjtkIm0NuLIQ0VTPZ8upIEtuxHaWX7W3tDVOlCLoTfkAlTHO004hQjo6Aq"
+  "process.env.STRIPE_SECRET_KEY"
 ); // add a stripe key, (this test key will expire on 18th march 2021)
 
 mongoose.pluralize(null);
@@ -18,7 +18,7 @@ const routeRoutes = require("./routes/route");
 app.post("/v1/api/stripe-payments", async (req, res) => {
   const { product, token } = req.body;
   console.log("PRODUCT", product);
-  console.log("PRICE", product.poice);
+  console.log("PRICE", product.price);
   const idempontencyKey = uuidv4();
   return stripe.customers
     .create({
