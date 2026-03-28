@@ -30,214 +30,94 @@ const BusHire = () => {
   return (
     <div>
       <div className={Styles.baneer}>
-        <div>
+        {/* Hero Banner */}
+        <div className={Styles.heroBanner}>
           <img
             className={Styles.imageBanner}
-            src="https://www.redbus.in/bushire/static/webv2/home/group-3%20(4).svg"
+            src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1400&q=80"
             alt="banner"
-            width="100%"
           />
           <div className={Styles.bannerElementDiv}>
             <div className={Styles.bannerBusHireText}>Bus Hire</div>
             <div className={Styles.bannerBusHireSubText}>
               Rent vehicles with a driver from the best operators
             </div>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/webv2/home/3%20(1).svg"
-                alt=""
-              />
-            </div>
           </div>
         </div>
+
+        {/* Book in 3 easy steps */}
         <div className={Styles.bookInEasyStepsdiv}>
-          <div className={Styles.bookInEasySteps_heading}>
-            Book in 3 easy steps
-          </div>
-          <div className={Styles.bookInEaschStep}>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/mwebv2/home/1%20(1).svg"
-                alt="1"
-              />
+          <div className={Styles.bookInEasySteps_heading}>Book in 3 easy steps</div>
+          <div className={Styles.stepsRow}>
+            <div className={Styles.stepCard}>
+              <img src="https://img.icons8.com/color/96/000000/bus2.png" alt="step1" className={Styles.stepIcon} />
+              <div className={Styles.stepNumber}>01</div>
+              <div className={Styles.stepTitle}>Choose the Journey Type</div>
+              <div className={Styles.stepDesc}>Select Outstation, Local or Airport transfer</div>
             </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignContent: "center",
-              }}
-            >
-              <div className={Styles.bookInEaschStepText}>Choose the</div>
-              <div
-                className={Styles.bookInEaschStepText}
-                style={{ fontWeight: "800" }}
-              >
-                Journey{" "}
-              </div>
-              <div
-                className={Styles.bookInEaschStepText}
-                style={{ fontWeight: "800" }}
-              >
-                Type
-              </div>
+            <div className={Styles.stepDivider}>›</div>
+            <div className={Styles.stepCard}>
+              <img src="https://img.icons8.com/color/96/000000/map-marker.png" alt="step2" className={Styles.stepIcon} />
+              <div className={Styles.stepNumber}>02</div>
+              <div className={Styles.stepTitle}>Tell us your Travel Plans</div>
+              <div className={Styles.stepDesc}>Enter pickup, drop and travel date details</div>
             </div>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/webv2/home/Group.png"
-                alt=""
-                width="202px"
-                height="144px"
-              />
-            </div>
-          </div>
-          <div className={Styles.bookInEaschStep}>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/mwebv2/home/2%20(2).svg"
-                alt="1"
-              />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignContent: "center",
-              }}
-            >
-              <div className={Styles.bookInEaschStepText}>Tell us</div>
-              <div className={Styles.bookInEaschStepText}>about your </div>
-              <div
-                className={Styles.bookInEaschStepText}
-                style={{ fontWeight: "800" }}
-              >
-                Travel Plans.
-              </div>
-            </div>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/webv2/home/2%20(5).svg"
-                alt=""
-                width="202px"
-                height="144px"
-              />
-            </div>
-          </div>
-          <div className={Styles.bookInEaschStep}>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/mwebv2/home/3.svg"
-                alt="1"
-              />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignContent: "center",
-              }}
-            >
-              <div
-                className={Styles.bookInEaschStepText}
-                style={{ fontWeight: "800" }}
-              >
-                Pick the vehicle
-              </div>
-              <div className={Styles.bookInEaschStepText}>you like and </div>
-              <div className={Styles.bookInEaschStepText}>go places.</div>
-            </div>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/webv2/home/3%20(1).svg"
-                alt=""
-                width="202px"
-                height="144px"
-              />
+            <div className={Styles.stepDivider}>›</div>
+            <div className={Styles.stepCard}>
+              <img src="https://img.icons8.com/color/96/000000/checked--v1.png" alt="step3" className={Styles.stepIcon} />
+              <div className={Styles.stepNumber}>03</div>
+              <div className={Styles.stepTitle}>Pick the vehicle you like</div>
+              <div className={Styles.stepDesc}>Choose from buses, tempo travellers or SUVs</div>
             </div>
           </div>
         </div>
         <div className={Styles.withBusHireYouCanGet}>
-          <div className={Styles.bookInEasySteps_heading}>
-            With Bus Hire you get
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", width: " 50%" }}>
-            <div className={Styles.BusHireFeatures}>
-              <div className={Styles.BusHireEachFeature}>
-                <img
-                  src="https://www.redbus.in/bushire/static/mwebv2/home/great-price.svg"
-                  alt=""
-                  height="100px"
-                />
-                <div style={{ marginTop: "20px" }}>
-                  <div className={Styles.BusHireEachFeatureText}>
-                    Great price and
-                  </div>
-                  <div className={Styles.BusHireEachFeatureText}>
-                    Great value
-                  </div>
-                </div>
+          <div className={Styles.bookInEasySteps_heading}>With Bus Hire you get</div>
+          <div className={Styles.featuresGrid}>
+            {[
+              {
+                img: "https://img.icons8.com/color/96/price-tag.png",
+                title: "Great Price & Value",
+                desc: "Lowest prices guaranteed with the best partner offers. Budget-friendly for all group sizes.",
+                bg: "#fff5f5",
+              },
+              {
+                img: "https://img.icons8.com/color/96/hand-sanitizer.png",
+                title: "Safe & Hygienic Vehicles",
+                desc: "All vehicles sanitized before and after every trip. Safety+ certified operators only.",
+                bg: "#f0fff4",
+              },
+              {
+                img: "https://img.icons8.com/color/96/gps-device.png",
+                title: "Live Track Your Journey",
+                desc: "Real-time GPS tracking on all trips. Share your location with family for peace of mind.",
+                bg: "#f0f4ff",
+              },
+              {
+                img: "https://img.icons8.com/color/96/customer-support.png",
+                title: "Best Customer Support",
+                desc: "24/7 dedicated support team. We're always available to resolve your travel issues.",
+                bg: "#fffbf0",
+              },
+              {
+                img: "https://img.icons8.com/color/96/verified-account.png",
+                title: "Verified Drivers & Vehicles",
+                desc: "All drivers are background-checked and licensed. Vehicles undergo regular safety inspections.",
+                bg: "#f5f0ff",
+              },
+              {
+                img: "https://img.icons8.com/color/96/refund.png",
+                title: "Easy Cancellation",
+                desc: "Free cancellation up to 48 hours before pickup. Hassle-free refund process.",
+                bg: "#f0faff",
+              },
+            ].map((f) => (
+              <div key={f.title} className={Styles.featureCard} style={{ background: f.bg }}>
+                <img src={f.img} alt={f.title} className={Styles.featureImg} />
+                <div className={Styles.featureTitle}>{f.title}</div>
+                <div className={Styles.featureDesc}>{f.desc}</div>
               </div>
-            </div>
-            <div className={Styles.BusHireFeatures}>
-              <div className={Styles.BusHireEachFeature}>
-                <img
-                  src="https://www.redbus.in/bushire/static/mwebv2/home/safe-vehicles.svg"
-                  alt=""
-                  height="100px"
-                />
-                <div style={{ marginTop: "20px" }}>
-                  <div className={Styles.BusHireEachFeatureText}>
-                    Safe and Hygenic
-                  </div>
-                  <div className={Styles.BusHireEachFeatureText}> Vehicles</div>
-                </div>
-              </div>
-            </div>
-            <div className={Styles.BusHireFeatures}>
-              <div className={Styles.BusHireEachFeature}>
-                <img
-                  src="https://www.redbus.in/bushire/static/mwebv2/home/live-tracking.svg?v=1"
-                  alt=""
-                  height="100px"
-                />
-                <div style={{ marginTop: "20px" }}>
-                  <div className={Styles.BusHireEachFeatureText}>
-                    Live Track your
-                  </div>
-                  <div className={Styles.BusHireEachFeatureText}> Journey</div>
-                </div>
-              </div>
-            </div>
-            <div className={Styles.BusHireFeatures}>
-              <div className={Styles.BusHireEachFeature}>
-                <img
-                  src="https://www.redbus.in/bushire/static/mwebv2/home/customer-support.svg"
-                  alt=""
-                  height="100px"
-                />
-                <div style={{ marginTop: "20px" }}>
-                  <div className={Styles.BusHireEachFeatureText}>
-                    Best Customer
-                  </div>
-                  <div className={Styles.BusHireEachFeatureText}> Support</div>
-                </div>
-              </div>
-            </div>
-            <div className={Styles.BusHireFeatures}>
-              <div className={Styles.BusHireEachFeature}>
-                <img
-                  src="https://www.redbus.in/bushire/static/mwebv2/home/verified-drivers.svg"
-                  alt=""
-                  height="100px"
-                />
-                <div style={{ marginTop: "20px" }}>
-                  <div className={Styles.BusHireEachFeatureText}>
-                    Verified Drivers and
-                  </div>
-                  <div className={Styles.BusHireEachFeatureText}> Vehicles</div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         {/* r-commute */}
@@ -254,7 +134,7 @@ const BusHire = () => {
           <div className={Styles.bookInEasySteps_heading}>Vehicle Types</div>
           <div className={Styles.vehicleTypeImage}>
             <img
-              src="https://www.redbus.in/bushire/static/webv2/home/group%20(10).svg"
+              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=700&q=80"
               alt="Buses and Mini Buses"
             ></img>
             <div className={Styles.vehicleText}>
@@ -267,7 +147,7 @@ const BusHire = () => {
           </div>
           <div className={Styles.vehicleTypeImage}>
             <img
-              src="https://www.redbus.in/bushire/static/webv2/home/group%20(11).svg"
+              src="https://images.unsplash.com/photo-1570125909517-53cb21c89ff2?w=700&q=80"
               alt="Buses and Mini Buses"
             ></img>
             <div className={Styles.vehicleText}>
@@ -281,7 +161,7 @@ const BusHire = () => {
           </div>
           <div className={Styles.vehicleTypeImage}>
             <img
-              src="https://www.redbus.in/bushire/static/webv2/home/group%20(12).svg"
+              src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=700&q=80"
               alt="Buses and Mini Buses"
             ></img>
             <div className={Styles.vehicleText}>
@@ -318,7 +198,7 @@ const BusHire = () => {
               </div>
 
               <img
-                src="https://www.redbus.in/bushire/static/mwebv2/home/group-89.svg"
+                src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=300&q=80"
                 alt=""
               />
             </div>
@@ -328,7 +208,7 @@ const BusHire = () => {
               <div style={{ display: "flex", justifyContent: "flex-start" }}>
                 <div>
                   <img
-                    src="https://www.redbus.in/bushire/static/mwebv2/home/logo-safety-plus.svg"
+                    src="https://s3.rdbuz.com/Images/webplatform/measures/safetyplus.svg"
                     alt=""
                   />
                 </div>
@@ -354,7 +234,7 @@ const BusHire = () => {
                 </div>
               </div>
               <img
-                src="https://www.redbus.in/bushire/static/mwebv2/home/thermal.svg"
+                src="https://img.icons8.com/color/96/000000/thermometer.png"
                 alt=""
               />
             </div>
@@ -452,7 +332,7 @@ const BusHire = () => {
           <div>
             <img
               style={{ marginTop: "30px", height: "300px" }}
-              src="https://www.redbus.in/bushire/static/mwebv2/home/city-list.svg"
+              src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80"
               alt=""
             />
           </div>

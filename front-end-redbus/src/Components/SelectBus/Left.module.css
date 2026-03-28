@@ -1,36 +1,58 @@
 .Left {
-  padding: 20px;
+  background: white;
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  height: fit-content;
+  position: sticky;
+  top: 72px;
 }
 
 .Left ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .Left_filters {
-  margin-bottom: 25px;
-}
-.Left ul li {
-  border-bottom: 1px solid #ddd;
-  padding: 15px 0px;
-  cursor: pointer;
-}
-.Left li i {
-  margin: 0 10px;
-}
-.Left ul li * {
-  display: inline-block;
-}
-.Left_filters__search {
-  border: 1px solid #ddd;
-  padding: 5px;
-  margin-top: 10px;
   margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
 }
-.Left_filters__search i {
-  color: rgb(126, 123, 123);
+
+.Left_filters:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.Left_filters > p {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.Left ul li {
+  padding: 10px 0;
   cursor: pointer;
+  font-size: 13px;
+  color: #4a4a4a;
+  border-bottom: 1px solid #f5f5f5;
+  transition: color 0.15s;
 }
-.Left_filters__search input {
-  border: none;
-  outline: none;
-  margin-left: 5px;
+
+.Left ul li:last-child {
+  border-bottom: none;
+}
+
+.Left ul li:hover {
+  color: #d84f57;
+}
+
+.Left_filters__amenities li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

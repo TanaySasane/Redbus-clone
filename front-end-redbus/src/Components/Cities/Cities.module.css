@@ -1,0 +1,104 @@
+.page { background: #f5f5f5; min-height: 100vh; }
+
+.hero {
+  background: linear-gradient(135deg, #d84f57, #c0393f);
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.heroTitle { font-size: 36px; font-weight: 800; color: white; margin: 0 0 8px; }
+.heroSub { font-size: 16px; color: rgba(255,255,255,0.85); margin: 0 0 24px; }
+
+.heroSearch {
+  width: 100%;
+  max-width: 480px;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  padding: 0 24px;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0 0 20px;
+}
+
+.routeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.routeCard {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: all 0.2s;
+}
+
+.routeCard:hover {
+  border-color: #d84f57;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(216,79,87,0.15);
+}
+
+.routeFrom { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+.routeArrow { font-size: 18px; color: #d84f57; margin: 4px 0; }
+.routeTo { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+
+.routeMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #888;
+}
+
+.routePrice { font-weight: 700; color: #d84f57; font-size: 14px; }
+
+.cityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.cityCard {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border: 1.5px solid #e8e8e8;
+  transition: all 0.15s;
+}
+
+.cityCard:hover {
+  border-color: #d84f57;
+  color: #d84f57;
+  box-shadow: 0 2px 10px rgba(216,79,87,0.1);
+}
+
+.cityIcon { font-size: 20px; }
+.cityName { flex: 1; font-size: 14px; font-weight: 600; color: #333; }
+.cityArrow { color: #ccc; font-size: 14px; }
+.cityCard:hover .cityArrow { color: #d84f57; }
+
+@media (max-width: 600px) {
+  .heroTitle { font-size: 24px; }
+  .routeGrid { grid-template-columns: 1fr 1fr; }
+  .cityGrid { grid-template-columns: 1fr 1fr; }
+}

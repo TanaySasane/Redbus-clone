@@ -1,187 +1,102 @@
-import React from "react";
+﻿import React from "react";
 import styles from "./Navbar.module.css";
+import { MdAccountCircle } from "react-icons/md";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../Redux/auth/actions";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { MdAccountCircle } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  loginSuccess,
-  loginFailure,
-  logout,
-  addCustomerMongo,
-} from "../../Redux/auth/actions";
-import ComingSoonModal from "../../Elements/ComingSoonModal";
-import { useHistory } from "react-router-dom";
+
 const Navbar = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [anchorEl2, setAnchorEl2] = React.useState(null);
-  const [isModelOpen, setIsModelOpen] = React.useState(false);
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
-  const currentCustomer = useSelector(
-    (state) => state.authReducer.currentCustomer
-  );
-  const setIsOpen = (bool) => {
-    setIsModelOpen(bool);
-  };
-  console.log("Here: ", isLoggedIn, currentCustomer);
   const history = useHistory();
+  const isLoggedIn = useSelector((s) => s.authReducer.isLoggedIn);
+  const isAdmin = useSelector((s) => s.authReducer.isAdmin);
+  const currentCustomer = useSelector((s) => s.authReducer.currentCustomer);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
   const handleLogout = () => {
     dispatch(logout());
-    history.push("/");
-  };
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClick2 = (event) => {
-    setAnchorEl2(event.currentTarget);
-  };
-  const handleClose = () => {
-    setIsOpen(true);
     setAnchorEl(null);
-  };
-
-  const handleClose2 = () => {
-    setAnchorEl2(null);
+    history.push("/");
   };
 
   return (
     <div className={styles.Navbar}>
-      <ComingSoonModal isOpen={isModelOpen} setIsOpen={setIsModelOpen} />
       <div className={styles.leftSide_header}>
         <img
-          src="https://www.redbus.in/i/59538b35953097248522a65b4b79650e.png"
+          src="/logo.png"
           alt="logo"
-          onClick={() => {
-            history.push("/");
-          }}
+          className={styles.logoImg}
+          onClick={() => history.push("/")}
         />
         <ul className={styles.Navbar__listOne}>
+          <li><Link to="/">BUS TICKETS</Link></li>
+          <li><Link to="/cities">CITIES</Link></li>
+          <li><Link to="/bus-hire">BUS HIRE</Link></li>
           <li>
-            <Link to="/">BUS TICKETS</Link>
-          </li>
-          <li onClick={() => setIsOpen(true)}>
-            rPool<sup>New</sup>
-          </li>
-          <li>
-            <Link to="/bus-hire">BUS HIRE</Link>
+            rPool<span className={styles.newBadge}>New</span>
           </li>
         </ul>
       </div>
-      <ul className={styles.Navbar__listTwo}>
-        <div className={styles.rightSide_header}>
-          {/* <li onClick={() => setIsOpen(true)}>HELP</li> */}
-          <li onClick={() => setIsOpen(true)}>MANAGE BOOKING</li>
-          <li>
-            <div>
-              <RiArrowDropDownLine
-                className={styles.icons}
-                onClick={handleClick}
-              />
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-                onClick={() => setIsOpen(true)}
-              >
-                <MenuItem onClick={handleClose}>Bus Ticket</MenuItem>
-                <MenuItem onClick={handleClose}>Cancel</MenuItem>
-                <MenuItem onClick={handleClose}>Reschedule</MenuItem>
-                <MenuItem onClick={handleClose}>Show My Ticket</MenuItem>
-                <MenuItem onClick={handleClose}>Email / SMS</MenuItem>
-              </Menu>
-            </div>
-          </li>
-          <li>
-            <MdAccountCircle
-              className={styles.icons}
-              style={{ fontSize: "30px" }}
-            />
-          </li>
-          <li>
-            <div>
-              <RiArrowDropDownLine
-                className={styles.icons}
-                onClick={handleClick2}
-              />
 
-              {isLoggedIn && currentCustomer ? (
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl2}
-                  keepMounted
-                  open={Boolean(anchorEl2)}
-                  onClose={handleClose2}
-                >
-                  <MenuItem
-                    onClick={handleClose2}
-                    //onClick={() => setIsOpen(true)}
-                  >
-                    My Trips
-                  </MenuItem>
-                  <MenuItem
-                    onClick={handleClose2}
-                    //onClick={() => setIsOpen(true)}
-                  >
-                    Wallet/Cards
-                  </MenuItem>
-                  <MenuItem onClick={handleClose2}>
-                    <Link
-                      to="/my-profile"
-                      style={{
-                        textDecoration: "none",
-                        cursor: "pointer",
-                        color: "black",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      My Profile
-                    </Link>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={handleClose2}
-                    //onClick={() => setIsOpen(true)}
-                  >
-                    Wallet
-                  </MenuItem>
-                  <MenuItem onClick={handleLogout}>SignOut</MenuItem>
-                </Menu>
+      <div className={styles.rightSide_header}>
+        {isAdmin && (
+          <Link to="/admin" className={styles.adminLink}>
+            👑 Admin Panel
+          </Link>
+        )}
+
+        {isLoggedIn && currentCustomer ? (
+          <div className={styles.userMenu}>
+            <div
+              className={styles.userInfo}
+              onClick={(e) => setAnchorEl(e.currentTarget)}
+            >
+              {currentCustomer.profilePicture ? (
+                <img
+                  src={currentCustomer.profilePicture}
+                  alt="avatar"
+                  className={styles.avatar}
+                />
               ) : (
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl2}
-                  keepMounted
-                  open={Boolean(anchorEl2)}
-                  onClose={handleClose2}
-                >
-                  <MenuItem onClick={handleClose2}>
-                    <GoogleLogin
-                      // clientId="493530183469-naj3i844vuh8ru5usav057k5kuabc3iq.apps.googleusercontent.com"
-                      clientId="446362734274-cq1j14nuk3ov3elpe64dbnosinakaoof.apps.googleusercontent.com"
-                      onSuccess={(response) => {
-                        console.log(
-                          "---------------------------CALLED-------------------------------"
-                        );
-                        dispatch(loginSuccess(response));
-                        dispatch(addCustomerMongo(response.profileObj));
-                      }}
-                      onFailure={(response) => {
-                        dispatch(loginFailure(response));
-                      }}
-                      cookiePolicy={"single_host_origin"}
-                    />
-                  </MenuItem>
-                </Menu>
+                <MdAccountCircle className={styles.avatarIcon} />
               )}
+              <span className={styles.userName}>
+                {currentCustomer.name?.split(" ")[0]}
+              </span>
+              <RiArrowDropDownLine className={styles.dropIcon} />
             </div>
-          </li>
-        </div>
-      </ul>
+            <Menu
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={() => setAnchorEl(null)}
+            >
+              <MenuItem onClick={() => { history.push("/my-profile"); setAnchorEl(null); }}>
+                My Profile
+              </MenuItem>
+              <MenuItem onClick={() => { history.push("/my-profile"); setAnchorEl(null); }}>
+                My Trips
+              </MenuItem>
+              {isAdmin && (
+                <MenuItem onClick={() => { history.push("/admin"); setAnchorEl(null); }}>
+                  Admin Panel
+                </MenuItem>
+              )}
+              <MenuItem onClick={handleLogout} style={{ color: "#d84f57" }}>
+                Sign Out
+              </MenuItem>
+            </Menu>
+          </div>
+        ) : (
+          <div className={styles.authButtons}>
+            <Link to="/login" className={styles.loginBtn}>Login</Link>
+            <Link to="/register" className={styles.registerBtn}>Register</Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

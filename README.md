@@ -1,130 +1,193 @@
-# Redbus
+# 🚌 redBus Clone — Full Stack Bus Booking Platform
 
-We have Cloned a bus ticketing and hiring platform called redbus.
-redBus is an Indian online bus ticketing platform providing ticket booking facility through its website, iOS and Android mobile apps. It connects bus travellers with a network of over 2500 bus operators, across India, countries in South East Asia and Latin America.
-It connects bus travellers with a network of over 2500 bus operators, across India, countries in South East Asia and Latin America.
+A full-stack clone of the [redBus](https://www.redbus.in) bus ticketing platform built with **React**, **Node.js**, **Express**, and **MongoDB**.
 
-In this project , we have tried to make a perfect clone of redbus.in.
+---
 
-### Live Link :  https://redbus.netlify.app/
+## 🔗 Live Demo
 
-# Steps to install the project:
+> Run locally — see setup instructions below.
 
-## Install basic Software:
-* Install NodeJS
-* Install VS Code
-* Install Git
+---
 
-## Clone the following git repository inside any folder:
+## 🛠 Tech Stack
 
-* https://github.com/nitansh11/redbus
+| Layer | Technology |
+|---|---|
+| Frontend | React 17, Redux, React Router DOM, Material UI |
+| Backend | Node.js, Express.js |
+| Database | MongoDB (Mongoose) |
+| Payments | Stripe |
+| Styling | CSS Modules, Montserrat font |
+| Auth | Google OAuth + Local email/password |
 
-##  Open the cloned git repo in VS Code and install the required dependencies.
+---
 
-* #### Open a terminal and make sure you are in the working directory folder (Inside redbus folder go to : redbus/front-end-redbus and redbus/back-end-redbus), run this command to install the required project dependencies in both back-end and front-end folder.
-  * npm install   
+## ✨ Features
 
-* #### Now, Run npm start in back-end-redbus as well as front-end-redbus folder in two separate terminals to start the backend and frontend
+### 🏠 Landing Page
+- Hero banner with animated search form
+- City autocomplete — type a letter and matching cities appear instantly
+- Date validation (DD/MM/YYYY format, no past dates, max 3 months ahead)
+- Coupon section, Safety+ program, Bus Tracker, Services, Awards
 
-* #### Now you can access the app at this URL: http://localhost:3000
+### 🎫 Bus Booking Flow
+- Search buses by source, destination, and date
+- Filter by bus type (AC Sleeper, AC Seater, Non-AC, Sleeper)
+- Sort by departure time, arrival time, ratings, price
+- Seat selection with visual seat map
+- Passenger details form with validation
+- Payment page with Stripe integration
 
-## Technologies used
-  
-  * React
-  * CSS
-  * Express
-  * MongoDB
-  * Mongoose
-  * Libraries used
-      
-      * Redux
-      * React-redux
-      * Redux-thunk
-      * material-ui/core
-      * material-ui/icons
-      * material-ui/lab
-      * uuid
-      * React-dom
-      * React-icons
-      * react-google-login
-      * react-icons
-      * react-modal
-      * react-scripts
-      * react-stripe-checkout
-      
-      
-## How to use the product
+### 🚌 Bus Hire
+- Journey type selection (Outstation / Local / Airport)
+- Full booking form with city autocomplete and validation
+- Dynamic vehicle listing with real-time pricing based on distance × passengers
+- Filter and sort vehicles by type, price, rating, capacity
+- Detailed vehicle page with tabs (Overview, Amenities, Policies, Reviews)
+- Dynamic fare breakup (base fare + driver allowance + GST)
 
+### 🏙️ Cities Page
+- 12 popular routes with one-click search
+- 20+ city cards — click any city to search buses
 
- 1. In order to use the product , you need to do npm start in your console.
+### 🔐 Authentication
+- Local login (email + password)
+- Google OAuth login
+- Protected routes
 
-  ![Landing Page](https://github.com/nitansh11/redbus/blob/master/Samples/HomePage1.PNG)
+**Demo credentials:**
+- User: any email + 6+ char password
+- Admin: `admin@redbus.com` / `admin123`
 
- 2. Here you can see our landing page , If you are using this product for the first time , you are a new user and you can login by clicking on dropdown on the right side of navbar and currently we are serving buses between Lucknow and Faizabad, so enter Lucknow in source and Faizabad in destination and select any date as per your choice.
+### 👑 Admin Panel
+- Dashboard with stats (bookings, routes, users, revenue)
+- Manage cities (add, search, delete)
+- Quick navigation to all sections
 
-  ![Sign up](https://github.com/nitansh11/redbus/blob/master/Samples/GoogleSignIn.PNG)
+### 📄 Static Pages
+- About Us, Careers (with job listings), Blog (with full articles)
+- Contact Us (working form with validation)
+- Help Center (searchable topics)
+- FAQ (categorized with search)
+- Terms & Conditions, Privacy Policy, Cookie Policy
 
- 3. This page contains the list of all the buses between source and destination.On this page, user can use filtering and sorting as per his requirement.
+### 🦶 Footer
+- All links working and pointing to real pages
+- Scroll-to-top on every navigation
+- Developer credit
 
-  ![list_of_buses](https://github.com/nitansh11/redbus/blob/master/Samples/listOfbuseswithfilters.PNG)
- 
- 4. Here, you will get all the list of buses acoording to your location and you can also filter them as per your requirement.
+---
 
- 5. After this , you can click on the View Seat button to book the seats, and select the seats as per your requirement.
-   Note : You cant select the red seats , since they are already booked.
-  
-   ![seet_booking](https://github.com/nitansh11/redbus/blob/master/Samples/seatBookUi.PNG)
- 
- 6.Now, select the boarding and dropping point and click on the continue button, now a form will open , here you need to enter the passenger details, and click on the Procced To Pay button.
-  
-   ![stripe payment](https://github.com/nitansh11/redbus/blob/master/Samples/StripePayment.PNG)
+## 🚀 Getting Started
 
- 7. On this page click on the button Pay with Stripe , here enter your email , card number as 4242 4242 4242 4242 , expiary date as 12/21 and cvv as 1234 and click on the pay button , your seat has been booked :relaxed:
+### Prerequisites
+- Node.js v16+
+- MongoDB Atlas account (or local MongoDB)
 
-  8. Now on this page you can see all your bookings.
-  
-  ![list_of_bookings](https://github.com/nitansh11/redbus/blob/master/Samples/ListOfBookings.PNG)
-  
-  9. Next feature that we have implemented is Bus Hire. Click on Bus Hire from the top bar. From this page, user can hire a bus for a round trip.
-  
-  ![bus hire landing page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire1.png)
-  
-  10. On the Bus Hire landing page, click on Outstation, after that user will be asked to enter the few details.After entering those, click on proceed.
+### Backend Setup
 
-  ![bus hire form page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire2.png)
-  
-  11. Select a bus as per your choice and click on View Details to proceed.
+```bash
+cd back-end-redbus
+npm install
+```
 
-  ![bus select page](https://github.com/nitansh11/redbus/blob/master/Samples/bishire3.png)
-  
-  12.Click on Book, to book that particular vehicle and proceed for the payment.
-  
-  ![bus book page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire4.png)
-  
-  13. On this page click on the button Pay with Stripe , here enter your email , card number as 4242 4242 4242 4242 , expiary date as 12/21 and CVV as 123 and click on the pay button , your bus has been booked :relaxed:
-  
-  ![payment page](https://github.com/nitansh11/redbus/blob/master/Samples/bushire5.png)
+Create a `.env` file:
+```env
+MONGODB_URI=your_mongodb_connection_string
+STRIPE_SECRET_KEY=your_stripe_secret_key
+PORT=3020
+```
 
- 
-### End-notes
- 
-  We have tried our best to give mostly all the functionality available on the actual website.
+Start the server:
+```bash
+npm start
+```
 
-  
-  ### Contributors:
+### Frontend Setup
 
-  * Nitansh Rastogi
+```bash
+cd front-end-redbus
+npm install
+```
 
-    * Github : [nitansh11](https://github.com/nitansh11)
+Update `.env`:
+```env
+REACT_APP_BACKEND_URL=http://localhost:3020
+```
 
-  * Uditanshu Kumar
+Start the app:
+```bash
+npm start
+```
 
-    * Github : [udit22022000](https://github.com/udit22022000)
+Open [http://localhost:3000](http://localhost:3000)
 
-  * Rohan Kumar Banarwal
+---
 
-    * Github : [kumarrohan2804](https://github.com/kumarrohan2804)
+## 📁 Project Structure
 
- * Archana Singh
+```
+redbus/
+├── back-end-redbus/          # Express + MongoDB API
+│   ├── controllers/          # Route handlers
+│   ├── models/               # Mongoose schemas
+│   ├── routes/               # API routes
+│   ├── app.js                # Entry point
+│   └── seed.js               # Database seeder
+│
+└── front-end-redbus/         # React application
+    └── src/
+        ├── Components/       # All UI components
+        │   ├── Auth/         # Login, Register
+        │   ├── Admin/        # Admin dashboard
+        │   ├── Cities/       # Cities explorer
+        │   ├── LandingPage/  # Home page sections
+        │   ├── BusDetails/   # Seat selection, bus cards
+        │   ├── BusServiceSection/ # Bus hire flow
+        │   └── StaticPages/  # About, FAQ, Blog, etc.
+        ├── Redux/            # State management
+        ├── Routes/           # React Router config
+        └── data/             # Mock data (offline fallback)
+```
 
-    * Github : [archana-sing](https://github.com/archana-sing)
+---
+
+## 🌐 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/v1/api/routes` | Get all routes |
+| GET | `/v1/api/routes/:dep/:arr/:date` | Get buses for a route |
+| POST | `/v1/api/booking` | Create a booking |
+| GET | `/v1/api/customers` | Get all customers |
+| POST | `/v1/api/customers` | Create a customer |
+| GET | `/v1/api/busservice` | Get all hire vehicles |
+| GET | `/v1/api/busservice/:id` | Get vehicle by ID |
+| POST | `/v1/api/bookingHire` | Create a hire booking |
+
+---
+
+## 📸 Screenshots
+
+| Page | Description |
+|---|---|
+| Home | Hero banner with search |
+| Select Bus | Bus listing with filters |
+| Bus Hire | Vehicle selection with pricing |
+| Admin | Dashboard with stats |
+| Cities | Route explorer |
+
+---
+
+## 👨‍💻 Developer
+
+**Tanay Sasane**
+
+Built with ❤️ as a full-stack portfolio project.
+
+---
+
+## 📝 License
+
+This project is for educational purposes only. redBus is a trademark of ibibo Group.

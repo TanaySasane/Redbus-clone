@@ -1,91 +1,94 @@
 import React from "react";
 import Styles from "./TripTypeContainer.module.css";
 import { useSelector } from "react-redux";
+import { FaLongArrowAltRight } from "react-icons/fa";
+
+const journeyTypes = [
+  {
+    id: "outstation",
+    label: "Outstation",
+    desc: "Travel outside your city",
+    icon: "https://img.icons8.com/color/96/000000/bus2.png",
+    available: true,
+  },
+  {
+    id: "local",
+    label: "Local",
+    desc: "Travel within your city",
+    icon: "https://img.icons8.com/color/96/000000/city.png",
+    available: false,
+  },
+  {
+    id: "airport",
+    label: "Airport",
+    desc: "Pickup & drop to airport",
+    icon: "https://img.icons8.com/color/96/000000/airport.png",
+    available: false,
+  },
+];
 
 const TripTypeContainer = ({ handleClick }) => {
-  const customerName = useSelector(
-    (state) => state.authReducer.currentCustomer
-  );
+  const [selected, setSelected] = React.useState(null);
+  const [hovered, setHovered] = React.useState(null);
+  const customer = useSelector((state) => state.authReducer.currentCustomer);
 
-  const checkLogin = () => {
-    if (customerName === null) {
-      alert("Please Login, To Book Seats");
-    } else {
-      handleClick();
+  const handleSelect = (type) => {
+    setSelected(type.id);
+    if (!type.available) return;
+    if (!customer) {
+      alert("Please login to book a vehicle.");
+      return;
     }
-  };
-
-  const handleLocalAndAirport = () => {
-    alert(
-      "Currently we are only providing Outstation service, so please select Outstation"
-    );
+    setTimeout(() => handleClick(), 300);
   };
 
   return (
-    <div>
-      <div className={Styles.tripTypecontainer}>
-        <div className={Styles.hireVehicleHeading}>Hire a Vehicle</div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: " #e6f2ff",
-            padding: "20px",
-          }}
-        >
-          <div
-            style={{ color: "#3e3e52", fontWeight: "700", fontSize: "19px" }}
-          >
-            click on the journey type
+    <div className={Styles.wrapper}>
+      <div className={Styles.card}>
+        <div className={Styles.header}>
+          <span className={Styles.headerIcon}>🚌</span>
+          <div>
+            <div className={Styles.headerTitle}>Hire a Vehicle</div>
+            <div className={Styles.headerSub}>Select your journey type to get started</div>
           </div>
-          <div className={Styles.journeyTypeDiv} onClick={checkLogin}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div className={Styles.journeyText}>Outstation</div>
-              <div className={Styles.journeySubText}>Anywere outside</div>
-              <div className={Styles.journeySubText}>your city</div>
+        </div>
+
+        <div className={Styles.typeGrid}>
+          {journeyTypes.map((type) => (
+            <div
+              key={type.id}
+              className={[
+                Styles.typeCard,
+                selected === type.id ? Styles.typeCardSelected : "",
+                hovered === type.id ? Styles.typeCardHovered : "",
+                !type.available ? Styles.typeCardDisabled : "",
+              ].join(" ")}
+              onClick={() => handleSelect(type)}
+              onMouseEnter={() => setHovered(type.id)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <img src={type.icon} alt={type.label} className={Styles.typeIcon} />
+              <div className={Styles.typeInfo}>
+                <div className={Styles.typeLabel}>{type.label}</div>
+                <div className={Styles.typeDesc}>{type.desc}</div>
+                {!type.available && (
+                  <span className={Styles.comingSoon}>Coming Soon</span>
+                )}
+              </div>
+              {type.available && (
+                <FaLongArrowAltRight className={Styles.arrow} />
+              )}
+              {selected === type.id && type.available && (
+                <div className={Styles.selectedDot} />
+              )}
             </div>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/images/asset_outstation.png"
-                alt=""
-                height="90px"
-              />
-            </div>
-          </div>
-          <div
-            className={Styles.journeyTypeDiv}
-            onClick={handleLocalAndAirport}
-          >
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div className={Styles.journeyText}>Local</div>
-              <div className={Styles.journeySubText}>Anywere within</div>
-              <div className={Styles.journeySubText}>your city</div>
-            </div>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/images/asset_local.png"
-                alt=""
-                height="90px"
-              />
-            </div>
-          </div>
-          <div
-            className={Styles.journeyTypeDiv}
-            onClick={handleLocalAndAirport}
-          >
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div className={Styles.journeyText}>Airport</div>
-              <div className={Styles.journeySubText}>Pickup and drop to</div>
-              <div className={Styles.journeySubText}>Airport</div>
-            </div>
-            <div>
-              <img
-                src="https://www.redbus.in/bushire/static/images/asset_airport.png"
-                alt=""
-                height="90px"
-              />
-            </div>
-          </div>
+          ))}
+        </div>
+
+        <div className={Styles.footer}>
+          <span className={Styles.footerNote}>
+            ✅ Verified operators &nbsp;|&nbsp; 🔒 Secure booking &nbsp;|&nbsp; 📍 Live tracking
+          </span>
         </div>
       </div>
     </div>

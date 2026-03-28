@@ -3,9 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
-const stripe = require("stripe")(
-  "process.env.STRIPE_SECRET_KEY"
-); // add a stripe key, (this test key will expire on 18th march 2021)
+require("dotenv").config();
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 mongoose.pluralize(null);
 app.use(express.json());
@@ -64,7 +64,7 @@ const connect = () => {
   });
 
   return mongoose.connect(
-"mongodb+srv://redbus_db_user_1:umJkhSujb8dZoc2a@redbuscnstructweek.bujg6.mongodb.net/redbus?retryWrites=true&w=majority",
+    process.env.MONGODB_URI,
     {
       useCreateIndex: true,
       useNewUrlParser: true,

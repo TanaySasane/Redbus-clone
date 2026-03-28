@@ -1,0 +1,11 @@
+.Right {
+  min-height: 400px;
+}
+
+.Right h1 {
+  text-align: center;
+  color: #888;
+  margin-top: 60px;
+  font-size: 20px;
+  font-weight: 500;
+}

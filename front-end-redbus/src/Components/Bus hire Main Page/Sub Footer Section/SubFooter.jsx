@@ -1,42 +1,65 @@
+import React from 'react';
+import Styles from './Subfooter.module.css';
+import { useHistory } from 'react-router-dom';
 
-import React from 'react'
-import Styles from './Subfooter.module.css'
+const cities = ['Ahmedabad','Mumbai','Bangalore','Chennai','Pune','Hyderabad','Delhi','Kolkata'];
+const tempos = ['Bangalore','Ahmedabad','Coimbatore','Vadodara','Kolkata','Delhi','Pune','Mumbai'];
+const routes = [
+  { from: 'Mumbai', to: 'Pune' },
+  { from: 'Delhi', to: 'Agra' },
+  { from: 'Bangalore', to: 'Mysore' },
+  { from: 'Chennai', to: 'Pondicherry' },
+  { from: 'Hyderabad', to: 'Vijayawada' },
+  { from: 'Ahmedabad', to: 'Surat' },
+];
+const operators = ['APSRTC','KSRTC','MSRTC','TSRTC','VRL Travels','Orange Travels','SRS Travels'];
 
 const SubFooter = () => {
-    return (
-        <div>
-            <div className={Styles.subFootercontainer}>
-                <div className={Styles.subFootercontainer_eachSection}>
-                    <h4>Bus Hire Cities</h4>
-                    <p>Bus Hire in Ahmedabad</p>
-                    <p>Bus Hire in Mumbai</p>
-                    <p>Bus Hire in Bnaglore</p>
-                    <p>Bus Hire in Chennai</p>
-                </div>
-                <div className={Styles.subFootercontainer_alternateSection}>
-                    <p>Bus Hire in Pune</p>
-                    <p>Bus Hire in Hyderabad</p>
-                    <p>Bus Hire in Delhi</p>
-                    <p>Bus Hire in Delhi</p>
-                </div>
-                <div className={Styles.subFootercontainer_eachSection}>
-                    <h4>Tempo travellers in other cities</h4>
-                    <p>Tempo travellers in Banglore</p>
-                    <p>Tempo travellers in Ahmedabad</p>
-                    <p>Tempo travellers in Coimbatore</p>
-                    <p>Tempo travellers in Vadodara</p>
-                    <p>Tempo travellers in Kolkata</p>
-                </div>
-                <div className={Styles.subFootercontainer_alternateSection}>
-                    <p>Tempo travellers in Delhi</p>
-                    <p>Tempo travellers in Pune</p>
-                    <p>Tempo travellers in Mumbai</p>
-                    <p>Tempo travellers in Hydearabd</p>
-                    <p>Tempo travellers in Chennai</p>
-                </div>
-            </div>
-        </div>
-    )
-}
+  const history = useHistory();
+  const today = new Date().toISOString().split('T')[0];
 
-export default SubFooter
+  return (
+    <div className={Styles.subFootercontainer}>
+      <div className={Styles.inner}>
+        <div className={Styles.column}>
+          <h4 className={Styles.colHeading}>Bus Hire Cities</h4>
+          {cities.map(c => (
+            <p key={c} className={Styles.link}
+              onClick={() => history.push('/bus-hire')}>
+              Bus Hire in {c}
+            </p>
+          ))}
+        </div>
+        <div className={Styles.column}>
+          <h4 className={Styles.colHeading}>Tempo Travellers</h4>
+          {tempos.map(c => (
+            <p key={c} className={Styles.link}
+              onClick={() => history.push('/bus-hire-card')}>
+              Tempo Travellers in {c}
+            </p>
+          ))}
+        </div>
+        <div className={Styles.column}>
+          <h4 className={Styles.colHeading}>Popular Routes</h4>
+          {routes.map(r => (
+            <p key={r.from + r.to} className={Styles.link}
+              onClick={() => history.push(`/select-bus?departure=${r.from}&arrival=${r.to}&date=${today}`)}>
+              {r.from} to {r.to}
+            </p>
+          ))}
+        </div>
+        <div className={Styles.column}>
+          <h4 className={Styles.colHeading}>Top Bus Operators</h4>
+          {operators.map(o => (
+            <p key={o} className={Styles.link}
+              onClick={() => history.push('/')}>
+              {o}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SubFooter;

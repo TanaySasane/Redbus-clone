@@ -1,0 +1,108 @@
+export const MOCK_BUS_SERVICES = [
+  {
+    _id: "bs1",
+    vehicle: "Volvo Multi-Axle AC Sleeper (2+1)",
+    img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=80",
+    capacity: 40,
+    type: "AC Sleeper",
+    pricePerKm: 18,
+    basePrice: 8000,
+    amenities: ["AC", "WiFi", "Charging Point", "Music System", "Blanket"],
+    rating: 4.5,
+    reviews: 128,
+    operator: "VRL Travels",
+    liveTracking: true,
+  },
+  {
+    _id: "bs2",
+    vehicle: "Scania AC Seater (2+2)",
+    img: "https://images.unsplash.com/photo-1570125909517-53cb21c89ff2?w=600&q=80",
+    capacity: 45,
+    type: "AC Seater",
+    pricePerKm: 14,
+    basePrice: 6000,
+    amenities: ["AC", "Charging Point", "Music System"],
+    rating: 4.2,
+    reviews: 95,
+    operator: "Orange Travels",
+    liveTracking: true,
+  },
+  {
+    _id: "bs3",
+    vehicle: "Tempo Traveller (12 Seater)",
+    img: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=80",
+    capacity: 12,
+    type: "Non-AC Seater",
+    pricePerKm: 10,
+    basePrice: 3500,
+    amenities: ["Music System", "Charging Point"],
+    rating: 4.0,
+    reviews: 67,
+    operator: "Raj National Express",
+    liveTracking: false,
+  },
+  {
+    _id: "bs4",
+    vehicle: "Mini Bus AC (20 Seater)",
+    img: "https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=600&q=80",
+    capacity: 20,
+    type: "AC Seater",
+    pricePerKm: 12,
+    basePrice: 5000,
+    amenities: ["AC", "Charging Point"],
+    rating: 4.3,
+    reviews: 82,
+    operator: "SRS Travels",
+    liveTracking: true,
+  },
+  {
+    _id: "bs5",
+    vehicle: "Luxury Coach AC (49 Seater)",
+    img: "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=600&q=80",
+    capacity: 49,
+    type: "AC Seater",
+    pricePerKm: 20,
+    basePrice: 12000,
+    amenities: ["AC", "WiFi", "Charging Point", "Music System", "TV", "Blanket"],
+    rating: 4.7,
+    reviews: 210,
+    operator: "IntrCity SmartBus",
+    liveTracking: true,
+  },
+  {
+    _id: "bs6",
+    vehicle: "Non-AC Sleeper (2+1)",
+    img: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80",
+    capacity: 36,
+    type: "Non-AC Sleeper",
+    pricePerKm: 11,
+    basePrice: 4500,
+    amenities: ["Charging Point"],
+    rating: 3.8,
+    reviews: 44,
+    operator: "Parveen Travels",
+    liveTracking: false,
+  },
+];
+
+// Calculate dynamic price based on passengers and distance
+export function calculatePrice(bus, passengers, pickUp, drop) {
+  const distanceMap = {
+    "Mumbai-Pune": 150, "Pune-Mumbai": 150,
+    "Delhi-Agra": 230, "Agra-Delhi": 230,
+    "Delhi-Jaipur": 280, "Jaipur-Delhi": 280,
+    "Bangalore-Mysore": 145, "Mysore-Bangalore": 145,
+    "Bangalore-Chennai": 350, "Chennai-Bangalore": 350,
+    "Chennai-Pondicherry": 170, "Pondicherry-Chennai": 170,
+    "Hyderabad-Vijayawada": 275, "Vijayawada-Hyderabad": 275,
+    "Lucknow-Delhi": 500, "Delhi-Lucknow": 500,
+    "Pune-Goa": 450, "Goa-Pune": 450,
+    "Indore-Bhopal": 190, "Bhopal-Indore": 190,
+  };
+  const key = `${pickUp}-${drop}`;
+  const distance = distanceMap[key] || 300;
+  const pax = parseInt(passengers) || 1;
+  const paxMultiplier = pax <= 10 ? 1 : pax <= 20 ? 1.3 : pax <= 40 ? 1.6 : 2;
+  const total = Math.round((bus.basePrice + bus.pricePerKm * distance) * paxMultiplier);
+  return { total, distance, pricePerKm: bus.pricePerKm };
+}

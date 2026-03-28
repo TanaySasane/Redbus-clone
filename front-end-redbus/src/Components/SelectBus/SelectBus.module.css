@@ -1,5 +1,19 @@
+.SelectBus {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
 .SelectBus_mainContent {
-  /* border: 1px solid blue; */
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+@media (max-width: 768px) {
+  .SelectBus_mainContent {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,60 +1,178 @@
 .LandingPage__mainBanner {
-  height: 400px;
+  min-height: 420px;
   background-image: url("https://st.redbus.in/Images/INDOFFER/COVID-19/heroimage2.png");
   background-repeat: no-repeat;
   background-size: cover;
-  border: 0.1px solid #d84f57;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
+
 .LandingPage__form {
-  margin: 0px auto;
-  margin-top: 150px;
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  width: 80%;
+  display: flex;
+  align-items: stretch;
+  width: 90%;
+  max-width: 860px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  overflow: visible;
+  margin-top: 40px;
 }
+
 .LandingPage__form > div {
-  width: 100%;
-}
-.LandingPage__form input,
-.LandingPage__form button {
-  height: 45px;
+  flex: 1;
+  position: relative;
 }
 
-.LandingPage__form__arrival__input > input,
+.LandingPage__form__departure__input,
+.LandingPage__form__arrival__input,
+.LandingPage__form__date {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #e8e8e8;
+}
+
+.inputIcon {
+  padding: 0 6px 0 10px;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
 .LandingPage__form__departure__input > input,
-.LandingPage__form__date > input,
-.LandingPage__form__button > button {
+.LandingPage__form__arrival__input > input,
+.LandingPage__form__date > input {
   width: 100%;
-  padding: 5px;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 10px 0 0;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+  background: transparent;
+}
+
+.LandingPage__form__departure__input > input::placeholder,
+.LandingPage__form__arrival__input > input::placeholder {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.LandingPage__form__date > input,
+.dateInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 10px 0 0;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+  background: transparent;
+  letter-spacing: 1px;
+}
+
+.LandingPage__form__button {
+  flex: 0 0 auto !important;
 }
 
 .LandingPage__form__button > button {
-  max-width: 150px;
+  height: 52px;
+  width: 130px;
   background-color: #d84f57;
   color: white;
   border: none;
   outline: none;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 14px;
   cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  letter-spacing: 0.5px;
+  transition: background 0.2s;
+  font-family: "Montserrat", sans-serif;
 }
+
+.LandingPage__form__button > button:hover {
+  background-color: #c0393f;
+}
+
+/* Dropdowns */
 .LandingPage__form__arrival__dropdown,
 .LandingPage__form__departure__dropdown {
-  padding: 10px 0;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+  z-index: 999;
   background-color: white;
-  overflow-y: scroll;
-  height: 200px;
+  overflow-y: auto;
+  max-height: 280px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #e8e8e8;
+  border-top: none;
 }
-.LandingPage__form__arrival__dropdown li,
-.LandingPage__form__departure__dropdown li {
-  padding: 10px 5px;
-  padding-left: 10px;
-  border-bottom: 1px solid #ddd;
+
+.LandingPage__form__arrival__dropdown ul,
+.LandingPage__form__departure__dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
   cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  transition: background 0.12s, color 0.12s;
+  border-bottom: 1px solid #f5f5f5;
 }
-.LandingPage__form__arrival__dropdown li:hover,
-.LandingPage__form__departure__dropdown li:hover {
-  background-color: #ddd;
-  font-weight: bold;
+
+.dropdownItem:last-child { border-bottom: none; }
+
+.dropdownItemHovered {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-size: 13px;
   color: #d84f57;
+  background: #fff5f5;
+  border-bottom: 1px solid #f5f5f5;
+  font-weight: 600;
+}
+
+.dropIcon { font-size: 14px; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .LandingPage__mainBanner {
+    min-height: 320px;
+    align-items: flex-end;
+    padding-bottom: 24px;
+  }
+  .LandingPage__form {
+    flex-direction: column;
+    width: 92%;
+    margin-top: 0;
+    border-radius: 8px;
+  }
+  .LandingPage__form__departure__input,
+  .LandingPage__form__arrival__input,
+  .LandingPage__form__date {
+    border-right: none;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .LandingPage__form__button > button {
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+  }
 }

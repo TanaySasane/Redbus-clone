@@ -1,62 +1,93 @@
-* {
-  box-sizing: border-box;
-}
-.mainContainer {
+.page { background: #f5f5f5; min-height: 100vh; }
+
+.pageHeader {
+  background: linear-gradient(135deg, #d84f57, #c0393f);
+  padding: 24px 32px;
   display: flex;
-  /* background-color: #f0f1f2; */
-  justify-content: center;
-}
-.leftContainer {
-  width: 60%;
-}
-.leftContainer > h1 {
-  margin-left: 15px;
-}
-.cardContainer {
-  display: flex;
-  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 12px;
 }
-.card {
-  width: calc(50% - 30px);
-  margin: 20px 15px;
-  box-shadow: 0 0 6px lightgray;
-  padding: 10px;
-  background-color: white;
-  border-radius: 8px;
+
+.routeTitle { font-size: 22px; font-weight: 800; color: white; margin: 0 0 6px; }
+.arrow { color: rgba(255,255,255,0.7); }
+.routeMeta { font-size: 13px; color: rgba(255,255,255,0.85); }
+.countBadge { background: white; color: #d84f57; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+.loadingBadge { color: rgba(255,255,255,0.8); font-size: 13px; }
+
+.mainLayout { display: flex; gap: 20px; max-width: 1200px; margin: 24px auto; padding: 0 20px; align-items: flex-start; }
+
+/* Sidebar */
+.sidebar { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 72px; }
+
+.filterCard { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
+.filterTitle { font-size: 12px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
+
+.filterBtn {
+  display: block; width: 100%; text-align: left;
+  padding: 8px 12px; border: 1.5px solid #e8e8e8; border-radius: 6px;
+  background: white; font-size: 12px; font-weight: 500; color: #555;
+  cursor: pointer; margin-bottom: 6px; font-family: 'Montserrat', sans-serif;
+  transition: all 0.15s;
 }
-.imgBox {
-  width: 100%;
-}
-.imgBox > img {
-  width: 100%;
-  height: 200px;
-}
-.footerCard {
-  border-top: 1px solid grey;
-  padding: 10px;
-}
-.rightContainer {
-  width: 20%;
-  padding-left: 50px;
-}
-.safetyContainer {
-  background-color: #fff5e5;
-  width: 100%;
-  margin-top: 70px;
-  text-align: center;
-  padding: 10px 10px 20px;
-}
-.blueContainer {
-  display: flex;
-  justify-content: space-between;
-  /* background-color: #e9f0ff; */
-  border: 1px solid rgb(37, 142, 184);
-  margin-top: 40px;
-  padding: 6px 3px 3px;
-}
-.link {
-  text-decoration: none;
-  font-weight: 500;
+.filterBtn:hover { border-color: #d84f57; color: #d84f57; }
+.filterBtnActive { border-color: #d84f57 !important; background: #fff5f5 !important; color: #d84f57 !important; font-weight: 700 !important; }
+
+.safetyCard { background: #fff8e1; border-radius: 10px; padding: 16px; text-align: center; }
+.safetyIcon { width: 48px; margin-bottom: 8px; }
+.safetyTitle { font-size: 14px; font-weight: 700; color: #d84f57; margin-bottom: 10px; }
+.safetyList { list-style: none; padding: 0; margin: 0; text-align: left; }
+.safetyList li { font-size: 12px; color: #555; margin-bottom: 6px; }
+
+/* Cards */
+.cardsArea { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+
+.card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.07); transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+.card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.12); transform: translateY(-2px); }
+
+.cardImg { position: relative; height: 200px; overflow: hidden; }
+.cardImg img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.card:hover .cardImg img { transform: scale(1.03); }
+.liveTag { position: absolute; top: 10px; left: 10px; background: #38b87c; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+
+.cardBody { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+
+.cardTop { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.vehicleName { font-size: 16px; font-weight: 700; color: #1a1a2e; margin: 0 0 4px; }
+.operatorName { font-size: 12px; color: #888; margin-bottom: 6px; }
+.typeBadge { display: inline-block; background: #e8f4ff; color: #1447a0; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+
+.priceBox { text-align: right; flex-shrink: 0; }
+.totalPrice { font-size: 22px; font-weight: 800; color: #d84f57; }
+.perPax { font-size: 12px; color: #888; }
+.distanceNote { font-size: 11px; color: #aaa; margin-top: 2px; }
+
+.cardMeta { display: flex; align-items: center; gap: 10px; }
+.ratingBadge { background: #38b87c; color: white; font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+.reviewCount { font-size: 12px; color: #888; }
+.capacity { font-size: 12px; color: #555; font-weight: 600; margin-left: auto; }
+
+.amenities { display: flex; flex-wrap: wrap; gap: 6px; }
+.amenityTag { background: #f0f0f0; color: #555; font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+
+.cardFooter { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid #f0f0f0; flex-wrap: wrap; gap: 8px; }
+.highlights { display: flex; gap: 12px; font-size: 11px; color: #888; flex-wrap: wrap; }
+.viewBtn { background: #d84f57; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 700; transition: background 0.2s; white-space: nowrap; }
+.viewBtn:hover { background: #c0393f; }
+
+/* Loading skeleton */
+.loadingState { display: flex; flex-direction: column; gap: 16px; }
+.skeleton { height: 280px; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; border-radius: 12px; animation: shimmer 1.5s infinite; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.emptyState { text-align: center; padding: 60px; background: white; border-radius: 12px; }
+.emptyIcon { font-size: 48px; margin-bottom: 12px; }
+.emptyState h3 { font-size: 18px; font-weight: 700; color: #333; margin: 0 0 8px; }
+.emptyState p { font-size: 14px; color: #888; }
+
+@media (max-width: 768px) {
+  .mainLayout { flex-direction: column; }
+  .sidebar { width: 100%; position: static; }
+  .pageHeader { padding: 16px; }
 }
