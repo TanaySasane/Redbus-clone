@@ -87,14 +87,6 @@ const BusBookingForm = () => {
     setPassDetails(newArr);
   };
 
-  console.log(
-    passDetails,
-    passPhNo,
-    passEmail,
-    passIsBusiness,
-    passIsCovidDonate,
-    passInsurance
-  );
 
   return (
     <div style={{ border: "1px solid black" }}>
@@ -108,7 +100,7 @@ const BusBookingForm = () => {
       >
         {seatsArray.map((seatNo, index) => {
           return (
-            <div className={Styles.ContentBlock}>
+            <div className={Styles.ContentBlock} key={seatNo}>
               <div className={Styles.passangerInfoTitle}>
                 <MdAccountCircle style={{ fontSize: "25px", color: "teal" }} />
                 <span style={{ marginLeft: "10px", marginTop: "2px" }}>
@@ -275,7 +267,7 @@ const BusBookingForm = () => {
             <img
               src="https://s1.rdbuz.com/apps/images/india-acko-insurance/luggage.png"
               alt="insurance"
-              class="i-img"
+              className="i-img"
               width="25"
               height="25"
             />
@@ -294,7 +286,7 @@ const BusBookingForm = () => {
             <img
               src="https://s1.rdbuz.com/apps/images/india-acko-insurance/accident.png"
               alt="insurance"
-              class="i-img"
+              className="i-img"
               width="25"
               height="25"
             />
